@@ -1,0 +1,58 @@
+// Place all the styles related to the Profits controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+	font-family: 'Metrophobic';	
+	font-size: 90%;
+}
+
+table {
+	border: 1px solid #CC3300;
+	border-collapse: collapse;
+}
+
+th {
+	background-color: #CC3300;	
+	color: white;
+}
+
+@mixin currency {
+	font-family: 'Courier New', monospace;
+	font-size: 90%;
+	text-align: right;
+	white-space: pre;
+	vertical-align: middle;
+}
+
+td {
+	border: 1px solid #CC3300;
+}
+
+td.currency {
+	@include currency;
+}
+
+td.numeric {
+	@include currency;
+}
+
+td.currency_highlight {
+	background-color: #F5D6CC;
+	@include currency;
+}
+
+tr.drillthrough:hover {
+	background-color: #F5D6CC;
+	cursor: pointer;
+}
+
+.crafting_amount {
+	white-space: pre;
+	font-family: 'Courier New', monospace;
+	font-size: 90%;
+}
+
+td.path_highlight {
+	background-color: #99FF33;
+}

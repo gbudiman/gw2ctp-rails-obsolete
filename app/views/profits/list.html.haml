@@ -1,0 +1,40 @@
+%nav= paginate @list
+
+%table{:id => 'profit_table'}
+	- row = 0
+	- @list.each do |e|
+		- if row % 16 == 0
+			%tr
+				%th= 'Item Name'
+				%th= 'Crafting$'
+				%th= 'Sell$'
+				%th= link_to 'P->S', 
+					controller: 'profits', 
+					action: 'list', 
+					order: :profit_on_sell
+				%th= link_to 'Sell#',
+					controller: 'profits', 
+					action: 'list', 
+					order: :sell_count
+				%th= 'Buy$'
+				%th= link_to 'P->B',
+					controller: 'profits',
+					action: 'list',
+					order: :profit_on_buy
+				%th= link_to 'Buy#',
+					controller: 'profits', 
+					action: 'list', 
+					order: :buy_count
+		- row = row + 1
+		%tr{class: 'drillthrough', id: e[:id]}
+			%td{title: e[:id]}= e[:name]
+			%td{class: 'currency'}= ProfitsHelper::set_to_currency e[:crafting_cost]
+			%td{class: 'currency'}= ProfitsHelper::set_to_currency e[:sell_price]
+			%td{class: 'currency_highlight'}= ProfitsHelper::set_to_currency e[:crafting_profit_on_sell]
+			%td{class: 'numeric'}= e[:sell_count]
+			%td{class: 'currency'}= ProfitsHelper::set_to_currency e[:buy_price]
+			%td{class: 'currency_highlight'}= ProfitsHelper::set_to_currency e[:crafting_profit_on_buy]
+			
+			%td{class: 'numeric'}= e[:buy_count]
+
+%nav= paginate @list

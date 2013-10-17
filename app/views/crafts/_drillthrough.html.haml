@@ -1,0 +1,14 @@
+- @crafts.each do |e|
+	%tr{class: 'drillthrough', 
+		depth: @depth, 
+		id: "#{@regrow}-#{e[:id]}"}
+		%td{class: 'nametext', title: e[:id]}
+			%span{class: 'crafting_amount'}= e[:crafting_amt]
+			= e[:name]
+		%td{class: ['currency', e[:craft_class]]}= ProfitsHelper::set_to_currency e[:crafting_cost]
+		%td{class: ['currency', e[:sell_class]]}= ProfitsHelper::set_to_currency e[:sell_price]
+		%td{class: 'currency_highlight'}= ProfitsHelper::set_to_currency e[:profit_on_sell]
+		%td{class: 'numeric'}= e[:sell_count]
+		%td{class: 'currency'}= ProfitsHelper::set_to_currency e[:buy_price]
+		%td{class: 'currency_highlight'}= ProfitsHelper::set_to_currency e[:profit_on_buy]
+		%td{class: 'numeric'}= e[:buy_count]
